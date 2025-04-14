@@ -2,7 +2,6 @@ package com.mobile.aplikasipeminjaman
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -11,7 +10,6 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
@@ -29,7 +27,7 @@ class register : AppCompatActivity() {
         inputPassword = findViewById(R.id.passwordInput)
         regBtn = findViewById(R.id.regBtn)
         auth = FirebaseAuth.getInstance()
-        loginNow = findViewById(R.id.loginNow);
+        loginNow = findViewById(R.id.loginNow)
         loginNow.setOnClickListener{
             val intent = Intent(this, login::class.java)
             startActivity(intent)
