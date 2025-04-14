@@ -28,7 +28,7 @@ class login : AppCompatActivity() {
         inputPassword = findViewById(R.id.passwordInput)
         loginBtn = findViewById(R.id.loginBtn)
         auth = FirebaseAuth.getInstance()
-        registerNow = findViewById(R.id.registerNow);
+        registerNow = findViewById(R.id.registerNow)
         registerNow.setOnClickListener{
             val intent = Intent(this, register::class.java)
             startActivity(intent)
