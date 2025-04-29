@@ -6,4 +6,7 @@
     <string name="register">Register</string>
     <string name="registerNow">Want to register?</string>
     <string name="loginNow">Login Now</string>
+    <string name="daftar_buku">Daftar Buku</string>
+    <string name="penulis">Penulis</string>
+    <string name="judul_buku">Judul Buku</string>
 </resources>
