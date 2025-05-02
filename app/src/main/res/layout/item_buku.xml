@@ -1,0 +1,74 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:padding="12dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imageCover"
+        android:layout_width="80dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_launcher_background" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/textJudul"
+            android:text="Judul Buku"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/textPenulis"
+            android:text="Penulis"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#555555" />
+
+        <TextView
+            android:id="@+id/tahunTerbit"
+            android:text="Tahun Terbit"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#555555" />
+        <TextView
+            android:id="@+id/penerbit"
+            android:text="Penerbit"
+            android:textSize="14sp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#555555" />
+
+        <Button
+            android:id="@+id/buttonPinjamBuku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Pinjam Buku"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/black"
+            android:textColor="@android:color/white"
+            android:visibility="visible"/>
+
+        <Button
+            android:id="@+id/buttonKembalikanBuku"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kembalikan Buku"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/black"
+            android:textColor="@android:color/white"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+</LinearLayout>
