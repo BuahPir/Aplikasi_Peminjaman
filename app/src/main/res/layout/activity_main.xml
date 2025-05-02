@@ -20,7 +20,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="32dp"/>
-
+        <!-- Jangan ganti idnya kalau mendesain (PENTING) -->
         <Button
             android:id="@+id/buttonAvailableBooks"
             android:layout_width="0dp"
