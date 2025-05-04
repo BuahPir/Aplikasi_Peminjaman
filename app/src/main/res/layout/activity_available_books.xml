@@ -1,54 +1,213 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/design_default_color_background"
     tools:context=".AvailableBooksActivity">
 
-        <TextView
-            android:id="@+id/textViewTitleAvailable"
+        <!-- App Bar with Shadow -->
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:elevation="0dp">
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@android:color/transparent">
+
+                        <!-- Header Card -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            app:cardCornerRadius="16dp"
+                            app:cardElevation="4dp"
+                            app:cardBackgroundColor="#EEF2FF">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical"
+                                    android:padding="16dp">
+
+                                        <ImageView
+                                            android:layout_width="40dp"
+                                            android:layout_height="40dp"
+                                            android:src="@android:drawable/ic_menu_sort_by_size"
+                                            android:tint="#1A237E"
+                                            android:layout_marginEnd="16dp"/>
+
+                                        <!-- Judul -->
+                                        <TextView
+                                            android:id="@+id/textViewTitleAvailable"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="Buku Tersedia"
+                                            android:textSize="24sp"
+                                            android:textStyle="bold"
+                                            android:textColor="#1A237E"
+                                            android:fontFamily="sans-serif-medium"/>
+                                </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+                </androidx.appcompat.widget.Toolbar>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Main Content -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+                <!-- Search Bar -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/searchCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="2dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:padding="8dp">
+
+                                <ImageView
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"
+                                    android:src="@android:drawable/ic_menu_search"
+                                    android:tint="#757575"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_marginEnd="8dp"/>
+
+                                <EditText
+                                    android:id="@+id/editTextSearch"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@null"
+                                    android:hint="Cari buku..."
+                                    android:inputType="text"
+                                    android:textSize="16sp"
+                                    android:padding="8dp"/>
+                        </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- RecyclerView with improved styling -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerViewAvailable"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="16dp"
+                    android:clipToPadding="false"
+                    android:padding="4dp"
+                    app:layout_constraintTop_toBottomOf="@+id/searchCard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    tools:listitem="@layout/item_buku" />
+
+                <!-- Empty State with Icon -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/emptyStateContainer"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:visibility="gone"
+                    app:layout_constraintTop_toBottomOf="@+id/searchCard"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                        <ImageView
+                            android:id="@+id/emptyStateImage"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:src="@android:drawable/ic_menu_info_details"
+                            android:tint="#BDBDBD"
+                            app:layout_constraintBottom_toTopOf="@+id/textViewEmptyAvailable"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <!-- Pesan kosong with improved styling -->
+                        <TextView
+                            android:id="@+id/textViewEmptyAvailable"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:text="Tidak ada buku saat ini"
+                            android:textColor="#757575"
+                            android:textSize="18sp"
+                            android:fontFamily="sans-serif-medium"
+                            app:layout_constraintTop_toBottomOf="@+id/emptyStateImage"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Loading State with Material Progress -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/loadingCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="8dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:padding="24dp">
+
+                                <!-- ProgressBar with improved styling -->
+                                <ProgressBar
+                                    android:id="@+id/progressBarAvailable"
+                                    style="?android:attr/progressBarStyle"
+                                    android:layout_width="48dp"
+                                    android:layout_height="48dp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="16dp"
+                                    android:text="Memuat buku..."
+                                    android:textColor="#757575"
+                                    android:textSize="16sp" />
+                        </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- FAB to add new books -->
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fabAddBook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Buku Tersedia"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:contentDescription="Tambah Buku"
+            android:src="@android:drawable/ic_input_add"
+            app:backgroundTint="#1A237E"
+            app:tint="@android:color/white" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerViewAvailable"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitleAvailable"
-            tools:listitem="@layout/item_buku" />
-
-        <ProgressBar
-            android:id="@+id/progressBarAvailable"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitleAvailable" />
-
-        <TextView
-            android:id="@+id/textViewEmptyAvailable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Memuat data..."
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitleAvailable" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

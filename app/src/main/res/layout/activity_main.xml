@@ -5,50 +5,83 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
+    android:background="#ECEFF1"
+    android:padding="24dp"
     tools:context=".MainActivity">
-
 
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Menu Utama Perpustakaan"
-            android:textSize="24sp"
+            android:text="📚 Menu Utama Perpustakaan"
+            android:textSize="26sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textColor="#263238"
+            android:fontFamily="sans-serif-medium"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="32dp"/>
-        <!-- Jangan ganti idnya kalau mendesain (PENTING) -->
-        <Button
-            android:id="@+id/buttonAvailableBooks"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:text="Lihat Buku Tersedia"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="48dp" />
 
-        <Button
-            android:id="@+id/buttonBorrowedBooks"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="Lihat Buku Dipinjam Saya"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="36dp"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonAvailableBooks" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="8dp"
+            android:backgroundTint="@android:color/white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                        <Button
+                            android:id="@+id/buttonAvailableBooks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="📖 Lihat Buku Tersedia"
+                            android:backgroundTint="#3949AB"
+                            android:textColor="#FFFFFF"
+                            android:elevation="2dp"
+                            android:fontFamily="sans-serif-medium"
+                            app:cornerRadius="12dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="12dp" />
+
+                        <Button
+                            android:id="@+id/buttonBorrowedBooks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="📕 Buku yang Saya Pinjam"
+                            android:backgroundTint="#00ACC1"
+                            android:textColor="#FFFFFF"
+                            android:elevation="2dp"
+                            android:fontFamily="sans-serif-medium"
+                            app:cornerRadius="12dp" />
+                </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <Button
             android:id="@+id/buttonSignOut"
             style="?attr/materialButtonOutlinedStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="32dp"
-            android:text="Logout"
+            android:text="🚪 Logout"
+            android:textColor="#D32F2F"
+            android:strokeColor="#D32F2F"
+            android:strokeWidth="1dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginBottom="48dp"
+            app:cornerRadius="12dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
