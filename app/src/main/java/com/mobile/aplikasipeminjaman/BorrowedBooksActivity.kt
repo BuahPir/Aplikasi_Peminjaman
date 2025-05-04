@@ -139,7 +139,7 @@ class BorrowedBooksActivity : AppCompatActivity() {
         lifecycleScope.launch {
             // Panggil fungsi service untuk mengembalikan buku
             BookFetchingService.returnBuku(userId, buku.id) {
-                // Update UI di Main Thread setelah proses selesai
+                // Update UI di Main Thread setelah proses selesai tambah
                 runOnUiThread {
                     fetchData()
                 }
