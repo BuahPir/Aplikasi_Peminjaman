@@ -115,31 +115,6 @@
                     android:layout_width="1dp"
                     android:layout_height="match_parent"
                     android:background="#E0E0E0"/>
-
-                <!-- Due Soon -->
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                    <TextView
-                        android:id="@+id/dueSoonCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0"
-                        android:textSize="24sp"
-                        android:textStyle="bold"
-                        android:textColor="#FFA000"/>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Jatuh Tempo"
-                        android:textSize="14sp"
-                        android:textColor="#757575"/>
-                </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -221,7 +196,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="Belum ada buku dipinjam"
-                android:textColor="#757575"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:fontFamily="sans-serif-medium"
                 app:layout_constraintTop_toBottomOf="@+id/emptyStateImage"
@@ -279,18 +254,5 @@
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Return All Button -->
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/fabReturnAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_margin="16dp"
-        android:text="Kembalikan Semua"
-        android:textColor="@android:color/white"
-        app:icon="@android:drawable/ic_menu_revert"
-        app:iconTint="@android:color/white"
-        app:backgroundTint="#E53935" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -76,7 +76,6 @@
             android:text="🚪 Logout"
             android:textColor="#D32F2F"
             android:strokeColor="#D32F2F"
-            android:strokeWidth="1dp"
             android:fontFamily="sans-serif"
             android:layout_marginBottom="48dp"
             app:cornerRadius="12dp"
