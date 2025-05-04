@@ -27,12 +27,13 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
-            app:layout_constraintTop_toBottomOf="@id/textViewTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:backgroundTint="@android:color/white"
             app:cardCornerRadius="16dp"
             app:cardElevation="8dp"
-            android:backgroundTint="@android:color/white">
+            android:layout_margin="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textViewTitle">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -44,11 +45,11 @@
                             android:id="@+id/buttonAvailableBooks"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="📖 Lihat Buku Tersedia"
                             android:backgroundTint="#3949AB"
-                            android:textColor="#FFFFFF"
                             android:elevation="2dp"
                             android:fontFamily="sans-serif-medium"
+                            android:text="📖 Lihat Buku Tersedia"
+                            android:textColor="#FFFFFF"
                             app:cornerRadius="12dp" />
 
                         <View
@@ -59,11 +60,26 @@
                             android:id="@+id/buttonBorrowedBooks"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="📕 Buku yang Saya Pinjam"
                             android:backgroundTint="#00ACC1"
-                            android:textColor="#FFFFFF"
                             android:elevation="2dp"
                             android:fontFamily="sans-serif-medium"
+                            android:text="📕 Buku yang Saya Pinjam"
+                            android:textColor="#FFFFFF"
+                            app:cornerRadius="12dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="12dp" />
+
+                        <Button
+                            android:id="@+id/buttonHistory"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:backgroundTint="#8E24AA"
+                            android:elevation="2dp"
+                            android:fontFamily="sans-serif-medium"
+                            android:text="📜 Riwayat Peminjaman"
+                            android:textColor="#FFFFFF"
                             app:cornerRadius="12dp" />
                 </LinearLayout>
         </com.google.android.material.card.MaterialCardView>

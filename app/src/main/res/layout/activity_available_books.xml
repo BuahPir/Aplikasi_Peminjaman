@@ -43,7 +43,7 @@
                                             android:layout_width="40dp"
                                             android:layout_height="40dp"
                                             android:src="@android:drawable/ic_menu_sort_by_size"
-                                            android:tint="#1A237E"
+                                            app:tint="#1A237E"
                                             android:layout_marginEnd="16dp"/>
 
                                         <!-- Judul -->
@@ -91,7 +91,7 @@
                                     android:layout_width="24dp"
                                     android:layout_height="24dp"
                                     android:src="@android:drawable/ic_menu_search"
-                                    android:tint="#757575"
+                                    app:tint="#757575"
                                     android:layout_marginStart="8dp"
                                     android:layout_marginEnd="8dp"/>
 
@@ -115,6 +115,7 @@
                     android:layout_marginTop="16dp"
                     android:clipToPadding="false"
                     android:padding="4dp"
+                    android:visibility="gone"
                     app:layout_constraintTop_toBottomOf="@+id/searchCard"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -126,7 +127,7 @@
                     android:id="@+id/emptyStateContainer"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     app:layout_constraintTop_toBottomOf="@+id/searchCard"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -137,7 +138,7 @@
                             android:layout_width="100dp"
                             android:layout_height="100dp"
                             android:src="@android:drawable/ic_menu_info_details"
-                            android:tint="#BDBDBD"
+                            app:tint="#BDBDBD"
                             app:layout_constraintBottom_toTopOf="@+id/textViewEmptyAvailable"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -197,17 +198,5 @@
                         </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- FAB to add new books -->
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAddBook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="16dp"
-            android:contentDescription="Tambah Buku"
-            android:src="@android:drawable/ic_input_add"
-            app:backgroundTint="#1A237E"
-            app:tint="@android:color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

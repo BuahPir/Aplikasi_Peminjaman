@@ -27,6 +27,7 @@ class AvailableBooksActivity : AppCompatActivity() {
     private lateinit var bukuAdapter: BukuAdapter
     private lateinit var progressBar: ProgressBar
     private lateinit var textViewEmpty: TextView
+    private lateinit var emptyStateContainer: View
     private lateinit var firebaseAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,6 +38,7 @@ class AvailableBooksActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewAvailable)
         progressBar = findViewById(R.id.progressBarAvailable)
         textViewEmpty = findViewById(R.id.textViewEmptyAvailable)
+        emptyStateContainer = findViewById(R.id.emptyStateContainer)
         firebaseAuth = FirebaseAuth.getInstance()
 
         setupAdapter()
@@ -71,11 +73,10 @@ class AvailableBooksActivity : AppCompatActivity() {
                     if (listBuku.isNotEmpty()) {
                         bukuAdapter.submitList(listBuku)
                         recyclerView.visibility = View.VISIBLE
-                        textViewEmpty.visibility = View.GONE
+                        emptyStateContainer.visibility = View.GONE
                     } else {
                         recyclerView.visibility = View.GONE
-                        textViewEmpty.visibility = View.VISIBLE
-                        textViewEmpty.text = "Tidak ada buku yang tersedia saat ini."
+                        emptyStateContainer.visibility = View.VISIBLE
                     }
                 }
             }
@@ -85,7 +86,7 @@ class AvailableBooksActivity : AppCompatActivity() {
     private fun showLoading(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         recyclerView.visibility = if (isLoading) View.GONE else View.VISIBLE // Sembunyikan RV saat loading
-        textViewEmpty.visibility = View.GONE // Sembunyikan teks empty saat loading
+        emptyStateContainer.visibility = View.GONE
     }
 
     private fun pinjamBuku(buku: InformasiBuku) {
