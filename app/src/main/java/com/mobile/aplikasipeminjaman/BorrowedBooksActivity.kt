@@ -25,6 +25,7 @@ class BorrowedBooksActivity : AppCompatActivity() {
     private lateinit var progressBar: ProgressBar
     private lateinit var textViewEmpty: TextView
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var currentBooksCountTextView: TextView
 
     private val TAG = "BorrowedBooksActivity"
 
@@ -37,6 +38,7 @@ class BorrowedBooksActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerViewBorrowed)
         progressBar = findViewById(R.id.progressBarBorrowed)
         textViewEmpty = findViewById(R.id.textViewEmptyBorrowed)
+        currentBooksCountTextView = findViewById(R.id.currentBooksCount)
         firebaseAuth = FirebaseAuth.getInstance()
 
         setupAdapter()
@@ -96,12 +98,15 @@ class BorrowedBooksActivity : AppCompatActivity() {
                         bukuAdapter.submitList(listBuku)
                         recyclerView.visibility = View.VISIBLE
                         textViewEmpty.visibility = View.GONE
+                        currentBooksCountTextView.text = listBuku.size.toString()
+
                     } else {
                         Log.w(TAG, "fetchData Callback: listBuku KOSONG.")
                         recyclerView.visibility = View.GONE
                         textViewEmpty.visibility = View.VISIBLE
                         // Cek log sebelumnya untuk tahu kenapa list kosong (tidak ada pinjaman vs error fetch)
                         textViewEmpty.text = "Anda belum meminjam buku apapun."
+                        currentBooksCountTextView.text = "0"
                         Log.w("BorrowedBooks", "Daftar buku dipinjam kosong atau gagal diambil.")
                     }
                 }
@@ -139,7 +144,7 @@ class BorrowedBooksActivity : AppCompatActivity() {
         lifecycleScope.launch {
             // Panggil fungsi service untuk mengembalikan buku
             BookFetchingService.returnBuku(userId, buku.id) {
-                // Update UI di Main Thread setelah proses selesai
+                // Update UI di Main Thread setelah proses selesai tambah
                 runOnUiThread {
                     fetchData()
                 }

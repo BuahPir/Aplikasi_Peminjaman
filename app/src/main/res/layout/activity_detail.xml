@@ -5,18 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".DetailActivity"
-    android:background="#FAFAFA">
+    android:background="#FFFFFF">
 
     <!-- Shimmer untuk Cover -->
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerCover"
         android:layout_width="match_parent"
-        android:layout_height="280dp">
+        android:layout_height="280dp"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_cover_rounded">
 
         <View
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#DDDDDD" />
+            android:background="#E0E0E0" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <!-- Image Cover (asli) -->
@@ -26,97 +28,117 @@
         android:layout_height="280dp"
         android:scaleType="centerCrop"
         android:visibility="gone"
+        android:layout_margin="16dp"
+        android:background="@drawable/bg_cover_rounded"
         android:contentDescription="Cover Buku" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:padding="16dp">
+        android:overScrollMode="never">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="16dp"
+            android:paddingBottom="24dp">
 
-            <!-- Shimmer Title -->
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerTitle"
+            <!-- Card-style container -->
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:layout_marginBottom="8dp">
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_card"
+                android:padding="16dp"
+                android:elevation="2dp">
 
-                <View
+                <!-- Shimmer Title -->
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerTitle"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-                    android:background="#DDDDDD" />
-            </com.facebook.shimmer.ShimmerFrameLayout>
+                    android:layout_marginBottom="8dp">
 
-            <!-- Judul -->
-            <TextView
-                android:id="@+id/textJudul"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="22sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                android:layout_marginBottom="8dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:background="#DDDDDD" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <!-- Shimmer Info -->
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerInfo"
-                android:layout_width="match_parent"
-                android:layout_height="20dp"
-                android:layout_marginBottom="16dp">
+                <!-- Judul -->
+                <TextView
+                    android:id="@+id/textJudul"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="#212121"
+                    android:visibility="gone"
+                    android:layout_marginBottom="8dp" />
 
-                <View
+                <!-- Shimmer Info -->
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerInfo"
                     android:layout_width="match_parent"
                     android:layout_height="20dp"
-                    android:background="#DDDDDD" />
-            </com.facebook.shimmer.ShimmerFrameLayout>
+                    android:layout_marginBottom="16dp">
 
-            <!-- Info -->
-            <TextView
-                android:id="@+id/textInfo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="14sp"
-                android:visibility="gone"
-                android:textColor="#666666"
-                android:layout_marginBottom="16dp" />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:background="#DDDDDD" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <!-- Shimmer Deskripsi -->
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmerDeskripsi"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="16dp">
+                <!-- Info -->
+                <TextView
+                    android:id="@+id/textInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="14sp"
+                    android:textColor="#757575"
+                    android:visibility="gone"
+                    android:layout_marginBottom="16dp" />
 
-                <View
+                <!-- Shimmer Deskripsi -->
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerDeskripsi"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
-                    android:background="#DDDDDD" />
-            </com.facebook.shimmer.ShimmerFrameLayout>
+                    android:layout_marginBottom="16dp">
 
-            <!-- Deskripsi -->
-            <TextView
-                android:id="@+id/textDeskripsi"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="16sp"
-                android:visibility="gone"
-                android:textColor="#222222"
-                android:justificationMode="inter_word"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:background="#DDDDDD" />
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
+                <!-- Deskripsi -->
+                <TextView
+                    android:id="@+id/textDeskripsi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:textColor="#424242"
+                    android:visibility="gone"
+                    android:lineSpacingExtra="6sp"
+                    android:justificationMode="inter_word" />
+            </LinearLayout>
+
+            <!-- Tombol Aksi -->
             <Button
                 android:id="@+id/buttonBacaPdf"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Baca Buku PDF"
+                android:textAllCaps="false"
                 android:layout_marginTop="24dp"
-                android:backgroundTint="@color/black"
-                android:textColor="@android:color/white"
-                android:visibility="gone" />
+                android:backgroundTint="#6200EE"
+                android:textColor="#FFFFFF"
+                android:visibility="gone"
+                android:paddingVertical="12dp"
+                android:elevation="4dp" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

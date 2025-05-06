@@ -4,4 +4,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#3564F5</color>
     <color name="purple">#5E27B9</color>
+    <color name="colorPrimary">#3498DB</color> <!-- Warna biru -->
+    <color name="colorAccent">#E74C3C</color> <!-- Warna merah -->
 </resources>

@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var buttonSignout: Button
     private lateinit var buttonAvailableBooks: Button
     private lateinit var buttonBorrowedBooks: Button
+    private lateinit var buttonHistory: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +44,7 @@ class MainActivity : AppCompatActivity() {
         buttonSignout = findViewById(R.id.buttonSignOut) // Pastikan ID ada di XML
         buttonAvailableBooks = findViewById(R.id.buttonAvailableBooks) // Pastikan ID ada di XML
         buttonBorrowedBooks = findViewById(R.id.buttonBorrowedBooks) // Pastikan ID ada di XML
+        buttonHistory = findViewById(R.id.buttonHistory)
 
         // Cek jika user belum login, kembali ke layar login
         if (firebaseAuth.currentUser == null) {
@@ -74,6 +76,12 @@ class MainActivity : AppCompatActivity() {
         // Tombol ke Buku Dipinjam
         buttonBorrowedBooks.setOnClickListener {
             val intent = Intent(this, BorrowedBooksActivity::class.java)
+            startActivity(intent)
+        }
+
+        //Tombol ke History Buku Pinjam
+        buttonHistory.setOnClickListener {
+            val intent = Intent(this, HistoryActivity::class.java)
             startActivity(intent)
         }
 

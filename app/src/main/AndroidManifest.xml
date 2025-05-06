@@ -15,6 +15,9 @@
         android:theme="@style/Theme.Material3.Light.NoActionBar"
         tools:targetApi="31">
         <activity
+            android:name=".HistoryActivity"
+            android:exported="false" />
+        <activity
             android:name=".BorrowedBooksActivity"
             android:exported="false" />
         <activity

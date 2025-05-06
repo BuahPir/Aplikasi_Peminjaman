@@ -1,74 +1,160 @@
-<LinearLayout
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
-    android:padding="12dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/imageCover"
-        android:layout_width="80dp"
-        android:layout_height="100dp"
-        android:scaleType="centerCrop"
-        android:layout_marginEnd="12dp"
-        android:src="@drawable/ic_launcher_background" />
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:orientation="horizontal"
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/textJudul"
-            android:text="Judul Buku"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:id="@+id/textPenulis"
-            android:text="Penulis"
-            android:textSize="14sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#555555" />
-
-        <TextView
-            android:id="@+id/tahunTerbit"
-            android:text="Tahun Terbit"
-            android:textSize="14sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#555555" />
-        <TextView
-            android:id="@+id/penerbit"
-            android:text="Penerbit"
-            android:textSize="14sp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="#555555" />
-
-        <Button
-            android:id="@+id/buttonPinjamBuku"
+        <!-- Image Cover with improved styling -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Pinjam Buku"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/black"
-            android:textColor="@android:color/white"
-            android:visibility="visible"/>
+            app:cardCornerRadius="8dp"
+            app:cardElevation="2dp">
 
-        <Button
-            android:id="@+id/buttonKembalikanBuku"
-            android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/imageCover"
+                android:layout_width="90dp"
+                android:layout_height="120dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_launcher_background" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Kembalikan Buku"
-            android:layout_marginTop="8dp"
-            android:backgroundTint="@color/black"
-            android:textColor="@android:color/white"
-            android:visibility="gone"/>
+            android:layout_weight="1"
+            android:layout_marginStart="16dp">
 
+            <!-- Title Text with improved typography -->
+            <TextView
+                android:id="@+id/textJudul"
+                android:text="Judul Buku"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#2C3E50"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:ellipsize="end"
+                android:maxLines="2" />
+
+            <!-- Author Text with icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@android:drawable/ic_menu_edit"
+                    android:tint="#7F8C8D"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:id="@+id/textPenulis"
+                    android:text="Penulis"
+                    android:textSize="15sp"
+                    android:textColor="#7F8C8D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Year Published with icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="4dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@android:drawable/ic_menu_my_calendar"
+                    android:tint="#7F8C8D"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:id="@+id/tahunTerbit"
+                    android:text="Tahun Terbit"
+                    android:textSize="14sp"
+                    android:textColor="#7F8C8D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Publisher with icon -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@android:drawable/ic_menu_compass"
+                    android:tint="#7F8C8D"
+                    android:layout_marginEnd="4dp"/>
+
+                <TextView
+                    android:id="@+id/penerbit"
+                    android:text="Penerbit"
+                    android:textSize="14sp"
+                    android:textColor="#7F8C8D"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Buttons in horizontal layout -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Pinjam Buku Button as Material Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonPinjamBuku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pinjam Buku"
+                    android:textSize="14sp"
+                    app:cornerRadius="8dp"
+                    app:icon="@android:drawable/ic_menu_add"
+                    app:iconGravity="textStart"
+                    android:backgroundTint="#3498DB"
+                    android:textColor="@android:color/white"
+                    android:layout_marginEnd="8dp" />
+
+                <!-- Kembalikan Buku Button as Material Button -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonKembalikanBuku"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Kembalikan"
+                    android:textSize="14sp"
+                    app:cornerRadius="8dp"
+                    app:icon="@android:drawable/ic_menu_revert"
+                    app:iconGravity="textStart"
+                    android:backgroundTint="#E74C3C"
+                    android:textColor="@android:color/white"
+                    android:visibility="gone" />
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</androidx.cardview.widget.CardView>
