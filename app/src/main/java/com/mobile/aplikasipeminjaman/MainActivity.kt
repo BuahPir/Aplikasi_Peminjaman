@@ -26,7 +26,7 @@ private val supabase = createSupabaseClient(
     // Add debug log
     Log.d("RegisterActivity", "Initializing Supabase client with URL: $supabaseUrl")
 }
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var buttonSignout: Button

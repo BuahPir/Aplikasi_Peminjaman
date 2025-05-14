@@ -15,6 +15,7 @@ import io.github.jan.supabase.postgrest.Postgrest
 import kotlinx.coroutines.CoroutineScope
 import io.github.jan.supabase.postgrest.from
 import io.github.jan.supabase.postgrest.query.Columns
+import io.github.jan.supabase.postgrest.query.Order
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -30,7 +31,7 @@ private val supabase = createSupabaseClient(
     // Add debug log
     Log.d("RegisterActivity", "Initializing Supabase client with URL: $supabaseUrl")
 }
-class HistoryActivity : AppCompatActivity() {
+class HistoryActivity : BaseActivity() {
     private lateinit var recyclerView: RecyclerView
     private val adapter = HistoryAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +58,8 @@ class HistoryActivity : AppCompatActivity() {
                         filter {
                             eq("user_id", uid)
                         }
+                        order("status", Order.DESCENDING) // "dipinjam" < "dikembalikan"
+                        order("tanggal_pinjam", Order.DESCENDING) // terbaru di atas
                     }
 
                 val list = result.decodeList<PeminjamanBuku>()

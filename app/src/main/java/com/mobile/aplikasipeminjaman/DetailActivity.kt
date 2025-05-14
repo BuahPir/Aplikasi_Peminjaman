@@ -37,7 +37,7 @@ private val supabase = createSupabaseClient(
     // Add debug log
     Log.d("RegisterActivity", "Initializing Supabase client with URL: $supabaseUrl")
 }
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : BaseActivity() {
     private lateinit var buttonBacaPdf: Button
     private lateinit var textJudul: TextView
     private lateinit var textInfo: TextView
