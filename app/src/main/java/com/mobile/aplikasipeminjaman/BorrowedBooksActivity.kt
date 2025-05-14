@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.launch
 
-class BorrowedBooksActivity : AppCompatActivity() {
+class BorrowedBooksActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var bukuAdapter: BukuAdapter // Gunakan adapter yang sama

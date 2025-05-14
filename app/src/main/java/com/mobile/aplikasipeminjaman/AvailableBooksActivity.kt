@@ -2,8 +2,11 @@ package com.mobile.aplikasipeminjaman
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
 import android.view.View
+import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -21,7 +24,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class AvailableBooksActivity : AppCompatActivity() {
+class AvailableBooksActivity : BaseActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var bukuAdapter: BukuAdapter
@@ -29,6 +32,8 @@ class AvailableBooksActivity : AppCompatActivity() {
     private lateinit var textViewEmpty: TextView
     private lateinit var emptyStateContainer: View
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var searchEditText: EditText
+    private var fullBookList: List<InformasiBuku> = emptyList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +44,7 @@ class AvailableBooksActivity : AppCompatActivity() {
         progressBar = findViewById(R.id.progressBarAvailable)
         textViewEmpty = findViewById(R.id.textViewEmptyAvailable)
         emptyStateContainer = findViewById(R.id.emptyStateContainer)
+        searchEditText = findViewById(R.id.editTextSearch)
         firebaseAuth = FirebaseAuth.getInstance()
 
         setupAdapter()
@@ -47,6 +53,14 @@ class AvailableBooksActivity : AppCompatActivity() {
         recyclerView.adapter = bukuAdapter
 
         fetchData()
+
+        searchEditText.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
+            override fun afterTextChanged(s: Editable?) {
+                filterBooks(s.toString())
+            }
+        })
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets -> // Ganti ID ke container utama layout
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -69,6 +83,8 @@ class AvailableBooksActivity : AppCompatActivity() {
         lifecycleScope.launch {
             BookFetchingService.fetchBukuTersedia { listBuku ->
                 runOnUiThread {
+                    fullBookList = listBuku
+                    filterBooks(searchEditText.text.toString())
                     showLoading(false)
                     if (listBuku.isNotEmpty()) {
                         bukuAdapter.submitList(listBuku)
@@ -82,7 +98,19 @@ class AvailableBooksActivity : AppCompatActivity() {
             }
         }
     }
+    private fun filterBooks(query: String) {
+        val filteredList = if (query.isEmpty()) {
+            fullBookList
+        } else {
+            fullBookList.filter {
+                it.judul.contains(query, ignoreCase = true)
+            }
+        }
 
+        bukuAdapter.submitList(filteredList)
+        recyclerView.visibility = if (filteredList.isNotEmpty()) View.VISIBLE else View.GONE
+        emptyStateContainer.visibility = if (filteredList.isEmpty()) View.VISIBLE else View.GONE
+    }
     private fun showLoading(isLoading: Boolean) {
         progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
         recyclerView.visibility = if (isLoading) View.GONE else View.VISIBLE // Sembunyikan RV saat loading
